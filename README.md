@@ -1,8 +1,8 @@
-# Next js , Node js , MomgoDB , GraphQl - Fullstack development
+## Next js , Node js , MomgoDB , GraphQl - Fullstack development
 
-# client folder have all front-end code 
+## Client folder have all front-end code 
 
-# server folder have all backend-end code 
+## Server folder have all backend-end code 
 
 
 ## Getting Started

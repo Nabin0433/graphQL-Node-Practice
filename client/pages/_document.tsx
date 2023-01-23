@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <title>GraphQl - Nextjs </title>
-      <body>
+      <body className='max-w-[600px] mx-auto'>
         <Main />
         <NextScript />
       </body>

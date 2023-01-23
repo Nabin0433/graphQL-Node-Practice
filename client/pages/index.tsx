@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { GetBooks, DeleteBook } from '../queries/queries'
 import { FiDelete } from "react-icons/fi";
 import React from 'react'
+import { Book, Maybe } from '@/types';
 
 
 const index = () => {
@@ -10,7 +11,7 @@ const index = () => {
   const [deleteBook] = useMutation(DeleteBook);
   const router = useRouter()
 
-  const deleteBookById = (id: string) => {
+  const deleteBookById = (id?: Maybe<string>) => {
     deleteBook({
       variables: { id: id }, refetchQueries: [
         {
@@ -28,8 +29,9 @@ const index = () => {
     <div className=''>
       <h2 className='text-center py-4'>GraphQl</h2>
       <hr />
-      <div className='flex justify-center items-center mt-8'>
+      <div className='flex justify-center items-center mt-8 space-x-4'>
         <button className='text-center py-2 px-8 border border-gray-300' onClick={() => router.push('/addbook')}>Add new book</button>
+        <button className='text-center py-2 px-8 border border-gray-300' onClick={() => router.push('/createauthor')}>Register as author</button>
       </div>
       <div className='mb-20' />
       <div className='flex pb-4 border-b'>
@@ -39,7 +41,7 @@ const index = () => {
       </div>
       <br />
       <div className='space-y-3'>
-        {data?.books?.map((item: any) => (
+        {data?.books?.map((item: Book) => (
           <div key={item?.id} className='flex'>
             <li className='w-80 capitalize'>{item.name}</li>
             <p className='w-60 capitalize cursor-pointer hover:text-blue-500 hover:underline' onClick={()=>router.push(`/bookbygenre/${item?.genre }`)}>{item?.genre}</p>

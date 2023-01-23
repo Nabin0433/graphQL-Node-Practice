@@ -6,6 +6,19 @@ const GetBooks = gql`{
       name
       genre
       author{
+        id
+        name
+      }
+    }
+  }`;
+
+const GetBooksByGenre = gql`
+  query GetBooksByGenre($genre:String!){
+    booksByGenre(genre:$genre){
+      id
+      name
+      author{
+        id
         name
       }
     }
@@ -16,6 +29,20 @@ const GetAuthors = gql`{
       id
       name
     }
+  }`;
+
+
+const GetAuthor = gql`
+  query GetAuthor($id:ID!){
+      author(id:$id){
+        name
+        id
+        books{
+          name
+          genre
+          id
+        }
+      }
   }`;
 
 
@@ -39,4 +66,4 @@ const DeleteBook = gql`
   `;
 
 
-export { GetBooks, GetAuthors, PostBook, DeleteBook }
+export { GetBooks, GetAuthors, PostBook, DeleteBook, GetAuthor, GetBooksByGenre }

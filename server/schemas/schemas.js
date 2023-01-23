@@ -52,6 +52,14 @@ const RootQuery = new GraphQLObjectType({
         return book;
       }
     },
+    booksByGenre: {
+      type: new GraphQLList(BookType),
+      args: { genre: { type: new GraphQLNonNull(GraphQLString) } },
+      async resolve(parent, args) {
+        const books = await Book.find({ genre: args.genre });
+        return books;
+      }
+    },
     authors: {
       type: new GraphQLList(AuthorType),
       async resolve() {

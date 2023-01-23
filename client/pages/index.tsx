@@ -42,8 +42,8 @@ const index = () => {
         {data?.books?.map((item: any) => (
           <div key={item?.id} className='flex'>
             <li className='w-80 capitalize'>{item.name}</li>
-            <p className='w-60 capitalize'>{item?.genre}</p>
-            <p className='w-60 capitalize'>{item?.author?.name}</p>
+            <p className='w-60 capitalize cursor-pointer hover:text-blue-500 hover:underline' onClick={()=>router.push(`/bookbygenre/${item?.genre }`)}>{item?.genre}</p>
+            <p className='w-60 capitalize cursor-pointer hover:text-blue-500 hover:underline' onClick={()=>router.push(`/bookbyauthor/${item?.author?.id}`)}>{item?.author?.name}</p>
             <p className='text-red-400 hover:text-red-800 cursor-pointer' onClick={() => deleteBookById(item?.id)}><FiDelete size={20} /></p>
           </div>
         ))}
